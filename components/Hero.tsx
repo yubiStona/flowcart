@@ -10,7 +10,7 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero entrance animation 
+      // Hero entrance animation
       gsap.fromTo(
         ".hero-text",
         { opacity: 0, y: 50 },
@@ -45,27 +45,27 @@ export default function Hero() {
         <div className="max-w-2xl">
           <div className="hero-text">
             <span className="font-label-caps text-label-caps text-secondary mb-4 block">
-              SPRING / SUMMER 2024
+              SPRING / SUMMER {new Date().getFullYear()}
             </span>
           </div>
           <div className="hero-text">
-            <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6 leading-none">
+            <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-secondary mb-6 leading-none">
               Shop Smarter.
               <br />
               Live Better.
             </h1>
           </div>
           <div className="hero-text">
-            <p className="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-md">
+            <p className="font-body-lg text-body-l text-white font-bold mb-10 max-w-md">
               Curated lifestyle essentials designed for the modern individual
               who values both form and function.
             </p>
           </div>
           <div className="hero-text flex flex-wrap gap-4">
-            <button className="bg-primary text-on-primary px-10 py-5 rounded-lg font-button text-button hover:bg-opacity-90 active:scale-95 transition-all shadow-lg">
+            <button className="bg-primary text-on-primary px-10 py-5 rounded-lg font-button text-button hover:bg-opacity-90 active:scale-95 transition-all shadow-lg font-bold">
               Shop Now
             </button>
-            <button className="border border-outline text-primary px-10 py-5 rounded-lg font-button text-button hover:bg-surface-container-low active:scale-95 transition-all">
+            <button className="border border-outline text-secondary px-10 py-5 rounded-lg font-button text-button hover:bg-surface-container-low active:scale-95 transition-all font-bold">
               View Lookbook
             </button>
           </div>

@@ -165,12 +165,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-muted-text font-body-sm text-body-sm">
-        <p>© 2024 FlowCart Premium. All rights reserved.</p>
-        <div className="flex gap-6">
-          <span>English (US)</span>
-          <span>USD ($)</span>
-        </div>
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-16 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-center items-center text-muted-text font-body-sm text-body-sm">
+        <p>
+          © {new Date().getFullYear()} FlowCart Premium. All rights reserved.
+        </p>
       </div>
     </footer>
   );

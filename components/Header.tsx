@@ -40,19 +40,19 @@ export default function Header() {
               Home
             </Link>
             <Link
-              href="/shop"
+              href="#"
               className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
             >
               Shop
             </Link>
             <Link
-              href="/categories"
+              href="#"
               className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
             >
               Categories
             </Link>
             <Link
-              href="/dashboard"
+              href="#"
               className="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors"
             >
               Dashboard

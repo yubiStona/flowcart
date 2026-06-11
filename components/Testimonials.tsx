@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 const testimonials = [
   {
     id: 1,
@@ -34,8 +36,28 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const revealElements = () => {
+      const reveals = sectionRef.current?.querySelectorAll(".reveal") || [];
+      const windowHeight = window.innerHeight;
+      const elementVisible = 150;
+      reveals.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add("active");
+        }
+      });
+    };
+
+    revealElements();
+
+    window.addEventListener("scroll", revealElements);
+    return () => window.removeEventListener("scroll", revealElements);
+  }, []);
   return (
-    <section className="py-24 bg-surface-container-low">
+    <section ref={sectionRef} className="py-24 bg-surface-container-low">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div className="flex flex-col md:flex-row gap-gutter">
           <div className="md:w-1/3">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import "./globals.css";
+import "material-symbols";
 
 export const metadata: Metadata = {
   title: "FlowCart | Shop Smarter. Live Better.",

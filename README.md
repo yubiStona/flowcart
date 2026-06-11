@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FlowCart – E-Commerce Landing Page
 
-## Getting Started
+A modern, fully responsive landing page for **FlowCart**, a fictional lifestyle brand.
+Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, **Redux Toolkit**, **TanStack Query**, and **GSAP**.
 
-First, run the development server:
+---
+
+## 🚀 Setup Instructions
+
+### Prerequisites
+
+- Node.js 18+ and npm / yarn / pnpm
+
+### Installation & Local Development
 
 ```bash
+# Clone the repository
+git clone https://github.com/yubiStona/flowcart.git
+cd flowcart
+
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎞️ GSAP Usage (Animations)
 
-## Learn More
+GSAP is used with the ScrollTrigger plugin to create smooth, scroll-driven animations.
 
-To learn more about Next.js, take a look at the following resources:
+| Component / File           | Animation Description                                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| components/Hero.tsx        | Hero entrance – text elements stagger into place (opacity + Y movement). Image scale – background image scales in on load. |
+| components/ProductGrid.tsx | Scroll-triggered product cards – each product card fades in and moves up when it enters the viewport.                      |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📡 TanStack Query Usage (Data Fetching)
 
-## Deploy on Vercel
+TanStack Query handles async data fetching with built-in caching, loading, and error states.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Section / Component        | Endpoint                  | What it does                                                                                                  |
+| -------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| components/ProductGrid.tsx | /api/products (local API) | Fetches the list of products. Shows a skeleton loader while loading and displays an error message on failure. |
+| components/FAQSection.tsx  | /api/faqs (local API)     | Fetches FAQ items. Implements loading skeletons and error handling.                                           |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Both endpoints are implemented as Next.js API routes inside app/api/.
+
+---
+
+## 🧠 State Management Usage (Redux Toolkit)
+
+Redux Toolkit is used to manage global application state across three feature slices.
+
+### store/slices/cartSlice.ts
+
+State: cart items array (with quantities), total quantity, total amount.
+
+Actions: addToCart, removeFromCart, updateQuantity, clearCart.
+
+Used in: ProductCard (add to cart), CartDrawer (display/update/remove), Header (cart badge).
+
+---
+
+### store/slices/wishlistSlice.ts
+
+State: array of wishlisted product IDs.
+
+Actions: toggleWishlist.
+
+Used in: ProductCard (heart icon toggles wishlist state).
+
+---
+
+### store/slices/uiSlice.ts
+
+State: mobile menu open/close, cart drawer visibility, quick-view modal product data.
+
+Actions: toggleMobileMenu, setCartDrawerOpen, setQuickViewProduct.
+
+Used in: Header (mobile menu), CartDrawer, QuickViewModal, ProductCard (opens quick-view).
+
+---
+
+Redux hooks (useAppDispatch, useAppSelector) are exported from store/hooks.ts for type-safe usage.
